@@ -20,11 +20,12 @@ contract TestContest is Contest {
 
 	function testVote () public{
 		uint tid = 0;//testid
+		address sender = 0xDd2d1e8C04672CBdb34e04dDf621efd96f13150B;
 		addContestant("xyz");// So there is atleast 1 entry to check function working
 		uint intval = contestants[tid].voteCount;
-		vote(tid);
+		doVote(sender,tid);
 		require (intval+1 == contestants[tid].voteCount,"The vote count did not increased");
-		require (voters[msg.sender] == true,"The voter is marked");
+		require (voters[sender] == true,"The voter is marked");
 	}
 	
 	

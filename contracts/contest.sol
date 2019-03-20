@@ -36,13 +36,16 @@ contract Contest {
 
 	}
 
-	function vote (uint _contestantId) public{
+	function vote(uint _contestantId){
+		doVote(msg.sender,_contestantId);// for testing propose seprated
+	}
+	function doVote (address snd,uint _contestantId) public{
 		//restricting the person who already casted the vote
-		require(!voters[msg.sender]);
+		require(!voters[snd]);
 		require(_contestantId > 0 && _contestantId <= contestantsCount );
 		
 		contestants[_contestantId].voteCount ++;
-		voters[msg.sender] = true;
+		voters[snd] = true;
 		//msg.sender is metadata the address of the user who casted the vote
 		emit votedEvent(_contestantId);
 

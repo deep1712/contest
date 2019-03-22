@@ -16,7 +16,7 @@ contract TestContest is Contest {
 	}
 
 	function testVote () public{
-		uint tid = 0;//testid
+		uint tid = 1;//testid
 		address sender = 0xDd2d1e8C04672CBdb34e04dDf621efd96f13150B;
 		bytes32 tname  = "xyz";
 		addContestant(tname);// So there is atleast 1 entry to check function working

@@ -7,7 +7,7 @@ contract TestContest is Contest {
     //function to compare 2 
    	function  testAddContestant () public{
 		bytes32 tname  = "abc"; //test name
-		addContestant("abc");
+		addContestant(tname);
 		Contestant storage tmp = contestants[contestantsCount];
 
 		require (tmp.id == contestantsCount,"The Id is not correct for contestant with name : abc");
@@ -18,7 +18,8 @@ contract TestContest is Contest {
 	function testVote () public{
 		uint tid = 0;//testid
 		address sender = 0xDd2d1e8C04672CBdb34e04dDf621efd96f13150B;
-		addContestant("xyz");// So there is atleast 1 entry to check function working
+		bytes32 tname  = "xyz";
+		addContestant(tname);// So there is atleast 1 entry to check function working
 		uint intval = contestants[tid].voteCount;
 		doVote(sender,tid);
 		require (intval+1 == contestants[tid].voteCount,"The vote count did not increased");

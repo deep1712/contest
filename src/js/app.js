@@ -98,7 +98,7 @@ App = {
       for (var i = 1; i <= contestantsCount; i++) {
         contestInstance.contestants(i).then(function(contestant) {
           var id = contestant[0];
-          var name = contestant[1];
+          var name = web3.toAscii(contestant[1]);
           var voteCount = contestant[2];
 
           // Render contestant Result

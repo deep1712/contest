@@ -5,16 +5,13 @@ import "./contest.sol";
 
 contract TestContest is Contest {
     //function to compare 2 
-    function compareStrings (string memory a, string memory b) public pure returns (bool) {
-       return keccak256(abi.encodePacked((a))) == keccak256(abi.encodePacked((b)));//pure means can't read or write the storage and view can only read storage
-    }
-	function  testAddContestant () public{
-		//string tname  = toString("abc"); //test name
+   	function  testAddContestant () public{
+		bytes32 tname  = "abc"; //test name
 		addContestant("abc");
 		Contestant storage tmp = contestants[contestantsCount];
 
 		require (tmp.id == contestantsCount,"The Id is not correct for contestant with name : abc");
-		require (compareStrings(tmp.name , "abc") == true,"The Name is not correct name should had been abc" );
+		require (tmp.name == tname,"The Name is not correct name should had been abc" );
 		require (tmp.voteCount == 0,"The number of votes is not correctly intialized for abc" );
 	}
 
@@ -30,3 +27,4 @@ contract TestContest is Contest {
 	
 	
 }
+

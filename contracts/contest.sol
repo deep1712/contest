@@ -10,7 +10,7 @@ contract Contest {
 	//declaring variables
 	struct Contestant{
 		uint id;// unsigned
-		string name;
+		bytes32 name;
 		uint voteCount;
 	}
 	// map is used 
@@ -29,14 +29,14 @@ contract Contest {
 		addContestant("Tom");
 		addContestant("Jerry");
 	}
-	function addContestant (string _name) public {
+	function addContestant (bytes32 _name) public {
 		//name starts with _ because it is private variable
 		contestantsCount++;
 		contestants[contestantsCount] = Contestant(contestantsCount,_name,0);
 
 	}
 
-	function vote(uint _contestantId){
+	function vote(uint _contestantId) public{
 		doVote(msg.sender,_contestantId);// for testing propose seprated
 	}
 	function doVote (address snd,uint _contestantId) public{
